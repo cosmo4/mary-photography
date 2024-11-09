@@ -9,22 +9,22 @@ const Footer = () => {
 
     return (
       <footer className="">
-        <Parallax strength={600} bgImage="/leah-senior-pic.webp">
+        <Parallax strength={300} bgImage="/leah-senior-pic.webp">
             <div className="min-h-52 flex items-center justify-center">
                 <div className="space-x-8">
-                    <Link href="/portfolio" className="underline-hover text-sugar bg-black px-2 py-1 bg-opacity-50">
+                    <Link href="/portfolio" className="hover:bg-opacity-80 text-sugar bg-black px-2 py-1 bg-opacity-50 rounded-md">
                         Portfolio
                     </Link>
-                    <Link href="/about" className="underline-hover ">
+                    <Link href="/about" className="hover:bg-opacity-80 text-sugar bg-black px-2 py-1 bg-opacity-50 rounded-md">
                         About
                     </Link>
-                    <Link href="/blog" className="underline-hover ">
+                    <Link href="/blog" className="hover:bg-opacity-80 text-sugar bg-black px-2 py-1 bg-opacity-50 rounded-md">
                         Blog
                     </Link>
-                    <Link href="/investment" className="underline-hover ">
+                    <Link href="/investment" className="hover:bg-opacity-80 text-sugar bg-black px-2 py-1 bg-opacity-50 rounded-md">
                         Investment
                     </Link>
-                    <Link href="/contact" className="underline-hover ">
+                    <Link href="/contact" className="hover:bg-opacity-80 text-sugar bg-black px-2 py-1 bg-opacity-50 rounded-md">
                         Contact
                     </Link>
                 </div>

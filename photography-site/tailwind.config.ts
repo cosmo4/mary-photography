@@ -18,6 +18,22 @@ const config: Config = {
         mocha: 'var(--mocha)',
         oak: 'var(--oak)',
       },
+
+      maxHeight: {
+        '50vh': '50vh',
+        '75vh': '75vh',
+      },
+
+      height: {
+        '50vh': '50vh',
+        '75vh': '75vh',
+      },
+
+      width: {
+        '50vw': '50vw',
+        '75vw': '75vw',
+      },
+
     },
   },
   plugins: [],
