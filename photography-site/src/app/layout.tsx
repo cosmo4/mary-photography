@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from '../app/components/Header';
-import Footer from '../app/components/Footer';
+import Header from './components/shared/Header';
+import Footer from './components/shared/Footer';
 
 export const metadata: Metadata = {
   title: "Mary Mills Photography",

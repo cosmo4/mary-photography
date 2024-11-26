@@ -32,6 +32,12 @@ const config: Config = {
       width: {
         '50vw': '50vw',
         '75vw': '75vw',
+        '100px': '100px',
+        '200px': '200px',
+        '300px': '300px',
+        '400px': '400px',
+        '500px': '500px',
+
       },
 
     },

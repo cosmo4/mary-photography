@@ -17,10 +17,10 @@ const Header = () => {
           
         </nav>
 
-        <div className="text-center mx-28">
+        <Link href="/" className="text-center mx-28">
           <h1 className="text-5xl tracking-wider text-gray-600">Mary Mills</h1>
           <p className="text-xl mt-1 tracking-widest text-gray-700">PHOTOGRAPHY</p>
-        </div>
+        </Link>
 
         
         <nav className="flex space-x-8 text-gray-700 text-xl mr-auto">

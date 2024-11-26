@@ -1,4 +1,5 @@
-import EmblaCarousel from '../app/components/EmblaCarousel';
+import EmblaCarousel from './components/sections/EmblaCarousel';
+import RecentWork from './components/sections/RecentWork';
 // import HeroSlideShow from "./components/HeroSlideShow";
 
 export default function Home() {
@@ -6,9 +7,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* <HeroSlideShow /> */}
+      {/* <Image Carousel /> */}
       <EmblaCarousel options={options} />
-
+      {/* Recent Work Section */}
+      <RecentWork />
+      
     </div>
   );
 }
