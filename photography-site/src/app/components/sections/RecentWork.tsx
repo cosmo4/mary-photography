@@ -16,7 +16,7 @@ const RecentWork = () => {
                 src="/senior-category.webp"
                 alt="Senior student"
                 fill
-                className="object-cover group-hover:brightness-110 transition-all duration-300"
+                className="object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-300"
               />
             </Link>
             <p className="mt-2 text-2xl font-semibold">Senior</p>
@@ -34,7 +34,7 @@ const RecentWork = () => {
                 src="/family-category.webp"
                 alt="Young family"
                 fill
-                className="object-cover group-hover:brightness-110 transition-all duration-300"
+                className="object-cover group-hover:brightness-110 group-hover:scale-110 transition-all duration-300"
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Families</p>
@@ -52,7 +52,7 @@ const RecentWork = () => {
                 src="/couple-category.webp"
                 alt="Couple"
                 fill
-                className="object-cover group-hover:brightness-110 transition-all duration-300"
+                className="object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-300"
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Couples</p>
@@ -70,7 +70,7 @@ const RecentWork = () => {
                 src="/wedding-category.webp"
                 alt="Bride and Groom"
                 fill
-                className="object-cover group-hover:brightness-110 transition-all duration-300"
+                className="object-cover group-hover:scale-110 group-hover:brightness-110 transition-all duration-300"
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Weddings</p>
