@@ -20,8 +20,8 @@ const RecentWork = () => {
               />
             </Link>
             <p className="mt-2 text-2xl font-semibold">Senior</p>
-            <div className="w-[150px] mx-auto outline-1 outline-gray-950">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200">
+            <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
+                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-gray-200">
                 See Album
                 </Link>
             </div>
@@ -38,8 +38,8 @@ const RecentWork = () => {
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Families</p>
-            <div className="w-[150px] mx-auto">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200">
+            <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
+                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-gray-200 ">
                 See Album
                 </Link>
             </div>
@@ -56,8 +56,8 @@ const RecentWork = () => {
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Couples</p>
-            <div className="w-[150px] mx-auto">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200">
+            <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
+                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-gray-200">
                 See Album
                 </Link>
             </div>
@@ -74,8 +74,8 @@ const RecentWork = () => {
               />
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Weddings</p>
-            <div className="w-[150px] mx-auto">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 rounded-md shadow-md hover:bg-gray-200">
+            <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
+                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-gray-200">
                 See Album
                 </Link>
             </div>
