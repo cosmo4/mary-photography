@@ -48,7 +48,7 @@ const Footer = () => {
                     <p className="">FOLLOW ME ON</p>
                     <p className="italic">&nbsp;&nbsp;INSTAGRAM</p>
                 </div>
-                <Link href="https://www.instagram.com/marymillsphotography/">@marymillsphotography</Link>
+                <Link href="https://www.instagram.com/marymillsphotography/" target="_blank" rel="noopener noreferrer">@marymillsphotography</Link>
             </div>
             <p className="py-14 bg-wheat text-black text-lg">© {currentYear} Mary Mills Photography. All rights reserved.</p>
         </div>
