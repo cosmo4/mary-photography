@@ -34,6 +34,9 @@ const config: Config = {
         '60vw': '60vw',
         '75vw': '75vw',
       },
+      brightness: {
+        '70': '.7',
+      }
 
     },
   },
