@@ -4,9 +4,10 @@ rules_version = '2';
 // allow write: if firestore.get(
 //    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
 service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if false;
-    }
+  match /images/{imageId} {
+    allow read: if resource.size < 200 * 1024;
+    allow write: if imageId.matches(".*\\.webp");
   }
 }
+// Anyone to read a public image if the file is less than 100kB
+// Anyone can upload a public file ending in '.webp'
