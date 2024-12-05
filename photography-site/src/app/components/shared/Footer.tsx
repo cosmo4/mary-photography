@@ -24,19 +24,19 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="relative gap-16 min-h-52 flex items-center justify-center text-xl">
-                    <Link href="/portfolio" className="hover:bg-opacity-40 hover:bg-black text-sugar  px-2 py-1 rounded-md">
+                    <Link href="/portfolio" className="hover:bg-opacity-40 hover:bg-black text-sugar  px-2 py-1 rounded-md duration-300">
                         Portfolio &nbsp; &#10095;
                     </Link>
-                    <Link href="/about" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md">
+                    <Link href="/about" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md duration-300">
                         About &nbsp; &#10095;
                     </Link>
-                    <Link href="/blog" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md">
+                    <Link href="/blog" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md duration-300">
                         Blog &nbsp; &#10095;
                     </Link>
-                    <Link href="/investment" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md">
+                    <Link href="/investment" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md duration-300">
                         Investment &nbsp; &#10095;
                     </Link>
-                    <Link href="/contact" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md">
+                    <Link href="/contact" className="hover:bg-opacity-40 text-sugar hover:bg-black px-2 py-1 rounded-md duration-300">
                         Contact &nbsp; &#10095;
                     </Link>
                 </div>
@@ -48,7 +48,7 @@ const Footer = () => {
                     <p className="">FOLLOW ME ON</p>
                     <p className="italic">&nbsp;&nbsp;INSTAGRAM</p>
                 </div>
-                <Link href="https://www.instagram.com/marymillsphotography/" target="_blank" rel="noopener noreferrer">@marymillsphotography</Link>
+                <Link href="https://www.instagram.com/marymillsphotography/" target="_blank" rel="noopener noreferrer" className="hover:text-bone hover:scale-110 duration-300">@marymillsphotography</Link>
             </div>
             <p className="py-14 bg-wheat text-black text-lg">© {currentYear} Mary Mills Photography. All rights reserved.</p>
         </div>
