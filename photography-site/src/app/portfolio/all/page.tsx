@@ -28,7 +28,7 @@ const FetchAllImages: React.FC = () => {
         );
 
         setImageUrls(urls); // Update state with fetched URLs
-      } catch (error: any) {
+      } catch (error) {
         console.error("Error fetching images:", error);
         setError("Failed to fetch images.");
       } finally {
