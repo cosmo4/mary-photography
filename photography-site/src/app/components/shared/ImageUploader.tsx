@@ -2,13 +2,17 @@ import React, { useState, ChangeEvent, DragEvent } from "react";
 import Image from "next/image";
 
 interface ImageUploaderProps {
-  onUpload: (files: File[]) => void; // Function to handle upload
+  onUpload: (files: {file: File; alt: string; categories: string[] } []) => void; // Function to handle upload
   maxFiles?: number; // Limit the number of files
 }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }) => {
   const [previews, setPreviews] = useState<string[]>([]); // Thumbnail previews
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [altText, setAltText] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const categoriesList = ["Senior", "Family", "Wedding", "Maternity", "Couple", "Blog"]
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -58,13 +62,35 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }
     setSelectedFiles(newSelectedFiles);
   }
 
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories((prev) =>
+    prev.includes(category) ? prev.filter((cat) => cat !== category) : [...prev, category])
+  }
+
   const handleUpload = () => {
     if (selectedFiles.length === 0) {
       alert("No files selected!");
       return;
     }
+
+    if (!altText) {
+      alert("Please provide a description for this upload batch.");
+      return;
+    }
+
+    if (selectedCategories.length === 0) {
+      alert("Please select at least one category.");
+      return;
+    }
+
+    const filesWithMetadata = selectedFiles.map((file) => ({
+      file,
+      alt: altText,
+      categories: selectedCategories,
+    }));
+    
     // Pass selected files to parent for upload
-    onUpload(selectedFiles); 
+    onUpload(filesWithMetadata); 
   };
 
   return (
@@ -104,7 +130,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }
             </div>
         </div>
 
-
         <div className="">
             <input
                 type="file"
@@ -114,10 +139,43 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }
                 className="mb-4 w-full text-xl"
             />
 
+            {/* Alt Text Input */}
+            <div className="my-4">
+              <label htmlFor="altText" className="block text-2xl mb-2">
+                Image Description (applies to all images):
+              </label>
+              <input
+                id="altText"
+                type="text"
+                value={altText}
+                onChange={(e) => setAltText(e.target.value)}
+                placeholder="Enter brief description for all images"
+                className="w-1/2 p-2 border border-gray-300 rounded"
+              />
+            </div>
+
+            {/* Categories Checkboxes */}
+            <div className="my-4">
+              <p className="text-2xl mb-2">Categories (applies to all images):</p>
+              <div className="flex flex-wrap gap-4">
+                {categoriesList.map((category) => (
+                  <label key={category} className="flex items-center text-xl">
+                    <input
+                      type="checkbox"
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                      className="mr-2"
+                    />
+                    {category}
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Upload Button */}
             <button
                 onClick={handleUpload}
-                className="mt-4 hover:bg-mocha hover:text-sugar px-8 py-4 rounded bg-sage text-black text-2xl"
+                className="mt-4 hover:bg-mocha hover:text-sugar duration-300 px-8 py-4 rounded bg-sage text-black text-2xl"
             >
                 Upload Images
             </button>
