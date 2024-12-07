@@ -7,17 +7,17 @@ import useFetchImages from "@/app/hooks/useFetchImages";
 import Masonry from "react-masonry-css";
 
 const FetchCategoryImages: React.FC<{ category: string }> = ({ category }) => {
-  const { imageUrls, loading, error } = useFetchImages(category);
+  const { imageUrls, imageAlts, loading, error } = useFetchImages(category);
 
   const breakpointColumnsObj = {
-    default: 4,
+    default: 3,
     1100: 3,
     700: 2,
     500: 1,
   };
 
   return (
-    <div className="w-4/5 mx-auto">
+    <div className="w-4/5 mx-auto min-h-screen">
       <ReturnToPortfolio />
       <div className="fetch-images min-h-screen mt-5 mb-14">
         {loading && <p>Loading images...</p>}
@@ -25,14 +25,14 @@ const FetchCategoryImages: React.FC<{ category: string }> = ({ category }) => {
 
         <Masonry 
             breakpointCols={breakpointColumnsObj}
-            className="flex gap-4 mt-5 mb-20"
+            className="flex gap-2 mt-5 mb-20"
             columnClassName="masonry-grid_column"
         >
             {imageUrls.map((url, index) => (
-                <div key={index} className="relative mb-4">
+                <div key={index} className="relative mb-2">
                 <Image
                     src={url}
-                    alt={`Image ${index + 1}`}
+                    alt={imageAlts[index]}
                     width={700}
                     height={500}
                     className="object-cover hover:opacity-90 duration-300"

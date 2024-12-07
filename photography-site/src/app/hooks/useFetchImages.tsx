@@ -4,6 +4,7 @@ import { db } from "@/app/lib/firebase";
 
 const useFetchImages = (category?: string, excludeCategory?: string) => {
     const [imageUrls, setImageUrls] = useState<string[]>([]);
+    const [imageAlts, setImageAlts] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
@@ -39,8 +40,11 @@ const useFetchImages = (category?: string, excludeCategory?: string) => {
   
           // Extract URLs from the documents
           const urls = querySnapshot.docs.map((doc) => doc.data().src as string);
+          // Extract Alts from the documents
+          const alts = querySnapshot.docs.map((doc) => doc.data().alt as string);
   
           setImageUrls(urls);
+          setImageAlts(alts);
         } catch (error) {
           console.error("Error fetching images:", error);
           setError("Failed to fetch images.");
@@ -52,7 +56,7 @@ const useFetchImages = (category?: string, excludeCategory?: string) => {
       fetchImages();
     }, [category, excludeCategory]);
   
-    return { imageUrls, loading, error };
+    return { imageUrls, imageAlts, loading, error };
   };
   
 

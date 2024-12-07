@@ -7,7 +7,7 @@ import { logout } from "../../lib/auth";
 import { auth } from "../../lib/firebase"
 import { useRouter } from "next/navigation";
 
-const adminEmails = ["warner.luke0102@gmail.com"];
+const adminEmails = ["warner.luke0102@gmail.com", "marymillsphotography@gmail.com"];
 
 const AdminPage: React.FC = () => {
     const [user, setUser] = useState<User | null>(null);
