@@ -1,64 +1,49 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { getDownloadURL, ref, listAll } from "firebase/storage";
-import { storage } from "@/app/lib/firebase";
+import ReturnToPortfolio from "@/app/components/shared/ReturnToPortfolio";
+import useFetchImages from "@/app/hooks/useFetchImages";
+import Masonry from "react-masonry-css";
 
 const FetchAllImages: React.FC = () => {
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const { imageUrls, loading, error } = useFetchImages(undefined, "Blog");
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        // Reference to the images folder in Firebase Storage
-        const imagesRef = ref(storage, "images");
-
-        // List all files in the folder
-        const result = await listAll(imagesRef);
-
-        // Fetch download URLs for each file
-        const urls = await Promise.all(
-          result.items.map((itemRef) => getDownloadURL(itemRef))
-        );
-
-        setImageUrls(urls); // Update state with fetched URLs
-      } catch (error) {
-        console.error("Error fetching images:", error);
-        setError("Failed to fetch images.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchImages();
-  }, []);
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
 
   return (
-    <div className="fetch-images min-h-screen w-4/5 mx-auto my-14">
-      {loading && <p>Loading images...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+    <div className="w-4/5 mx-auto min-h-screen">
+      <ReturnToPortfolio />
+      <div>
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
 
-      <div className="grid grid-cols-4 gap-4">
-        {imageUrls.map((url, index) => (
-          <div key={index} className="relative w-full border">
-            <Image
-              src={url}
-              alt={`Image ${index + 1}`}
-              width={700}
-              height={500}
-              className="object-cover hover:opacity-90 duration-300"
-            />
-          </div>
-        ))}
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="flex gap-2 mt-5 mb-20"
+          columnClassName="masonry-grid_column"
+        >
+          {imageUrls.map((url, index) => (
+            <div key={index} className="relative mb-2">
+              <Image
+                src={url}
+                alt={`Image ${index + 1}`}
+                width={1000}
+                height={500}
+                className="object-cover hover:opacity-90 duration-300"
+              />
+            </div>
+          ))}
+        </Masonry>
       </div>
     </div>
   );
 };
+
 
 export default FetchAllImages;

@@ -40,7 +40,7 @@ const LoginPage: React.FC = () => {
         />
         <button
           onClick={handleLogin}
-          className="w-full bg-oak text-white py-2 rounded hover:bg-mocha"
+          className="w-full bg-oak text-white py-2 rounded hover:bg-mocha duration-300"
         >
           Login
         </button>
