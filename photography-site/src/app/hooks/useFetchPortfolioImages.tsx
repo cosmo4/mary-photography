@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
-const useFetchImages = (category?: string, excludeCategory?: string) => {
+const useFetchPortfolioImages = (category?: string, excludeCategory?: string) => {
     const [images, setImages] = useState<{ src: string; alt: string; width: number; height: number;}[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -73,4 +73,4 @@ const useFetchImages = (category?: string, excludeCategory?: string) => {
     return { images, loading, error };
   };
 
-export default useFetchImages;
+export default useFetchPortfolioImages;
