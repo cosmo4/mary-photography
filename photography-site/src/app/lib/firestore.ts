@@ -42,4 +42,37 @@ const fetchBlogBySlug = async (slug: string) => {
     }
 };
 
-export { saveToFirestore, fetchBlogBySlug };
+const saveBlogToFirestore = async (
+    // isPublished: boolean,
+    // categories: string[],
+    title: string,
+    content: string,
+    images: string[],
+) => {
+    // Ensures the slug is unique for each blog post
+    const slugBase = title.toLowerCase().replace(/\s+/g, "-");
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const slug = `${slugBase}-${randomNum}`;
+
+    try {
+        const blogPostDoc = {
+            title: title,
+            slug: slug,
+            content: content,
+            imageThumbnail: images[0],
+            isPublished: true,
+            images: images,
+            categories: [""],
+            publishedAt: serverTimestamp()
+        }
+
+        const docRef = doc(db, "blog_posts", `${Date.now()}`);
+        await setDoc(docRef, blogPostDoc);
+        console.log("Blog document written successfully!");
+    } catch (error) {
+        console.log("Failed to upload blog post: ", error)
+        throw error;
+    }
+}
+
+export { saveToFirestore, fetchBlogBySlug, saveBlogToFirestore };

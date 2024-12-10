@@ -4,9 +4,10 @@ import Image from "next/image";
 interface ImageUploaderProps {
   onUpload: (files: {file: File; alt: string; categories: string[] } []) => void; // Function to handle upload
   maxFiles?: number; // Limit the number of files
+  actionText?: string;
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30, actionText = "Upload Images" }) => {
   const [previews, setPreviews] = useState<string[]>([]); // Thumbnail previews
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [altText, setAltText] = useState("");
@@ -177,7 +178,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30 }
                 onClick={handleUpload}
                 className="mt-4 hover:bg-mocha hover:text-sugar duration-300 px-8 py-4 rounded bg-sage text-black text-2xl"
             >
-                Upload Images
+                {actionText}
             </button>
         </div>
         {/* File Input */}
