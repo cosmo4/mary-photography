@@ -3,8 +3,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
 const useFetchImages = (category?: string, excludeCategory?: string) => {
-    const [imageUrls, setImageUrls] = useState<string[]>([]);
-    const [imageAlts, setImageAlts] = useState<string[]>([]);
+    const [images, setImages] = useState<{ src: string; alt: string; width: number; height: number;}[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
@@ -37,14 +36,29 @@ const useFetchImages = (category?: string, excludeCategory?: string) => {
           }
   
           const querySnapshot = await getDocs(q);
+
+          const promises = querySnapshot.docs.map(async (doc) => {
+            const data = doc.data();
+            const src = data.src as string;
+            const alt = data.alt || "Image";
   
-          // Extract URLs from the documents
-          const urls = querySnapshot.docs.map((doc) => doc.data().src as string);
-          // Extract Alts from the documents
-          const alts = querySnapshot.docs.map((doc) => doc.data().alt as string);
+            // Dynamically get the image dimensions
+            const img = new Image();
+            img.src = src;
+            
+            await new Promise((resolve) => (img.onload = resolve)); // Wait until the image loads
   
-          setImageUrls(urls);
-          setImageAlts(alts);
+            return {
+              src,
+              alt,
+              width: img.width,
+              height: img.height,
+            };
+          });
+
+          const imagesData = await Promise.all(promises);
+  
+          setImages(imagesData);
         } catch (error) {
           console.error("Error fetching images:", error);
           setError("Failed to fetch images.");
@@ -56,8 +70,7 @@ const useFetchImages = (category?: string, excludeCategory?: string) => {
       fetchImages();
     }, [category, excludeCategory]);
   
-    return { imageUrls, imageAlts, loading, error };
+    return { images, loading, error };
   };
-  
 
 export default useFetchImages;

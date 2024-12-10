@@ -1,45 +1,27 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import ReturnToPortfolio from "@/app/components/shared/ReturnToPortfolio";
 import useFetchImages from "@/app/hooks/useFetchImages";
-import Masonry from "react-masonry-css";
+import { Gallery } from "react-grid-gallery";
 
 const FetchAllImages: React.FC = () => {
-  const { imageUrls, loading, error } = useFetchImages(undefined, "Blog");
-
-  const breakpointColumnsObj = {
-    default: 3,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
+  const { images, loading, error } = useFetchImages();
+  console.log("fetchallimages: ", images);
 
   return (
     <div className="w-4/5 mx-auto min-h-screen">
       <ReturnToPortfolio />
-      <div>
+      <div className="mt-5 mb-20">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
 
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="flex gap-2 mt-5 mb-20"
-          columnClassName="masonry-grid_column"
-        >
-          {imageUrls.map((url, index) => (
-            <div key={index} className="relative mb-2">
-              <Image
-                src={url}
-                alt={`Image ${index + 1}`}
-                width={1000}
-                height={500}
-                className="object-cover hover:opacity-90 duration-300"
-              />
-            </div>
-          ))}
-        </Masonry>
+        <Gallery
+          images={images}
+          enableImageSelection={false}
+          rowHeight={700}
+          margin={2}
+        />
       </div>
     </div>
   );

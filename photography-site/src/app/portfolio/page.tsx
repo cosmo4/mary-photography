@@ -40,13 +40,7 @@ const Portfolio = () => {
             <Link href="/portfolio/family" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
         </div>
-        <Link href="/portfolio/all">
-          <Parallax strength={70} bgImage="/full-width-img.webp" className="mb-24 hover:opacity-85 duration-300">
-            <div className="min-h-32 flex justify-center items-center">
-              <Link href="portfolio/all" className="text-2xl text-black bg-sage hover:text-sugar hover:bg-mocha hover:opacity-100 px-8 py-4 rounded-md duration-300">See Full Gallery</Link>
-            </div>
-          </Parallax>
-        </Link>
+        
         {/* Couples Album */}
         <div className="flex gap-36 items-center justify-center">
           <div className="flex flex-col justify-center items-center gap-6 w-1/5">
@@ -71,6 +65,14 @@ const Portfolio = () => {
             <Link href="/portfolio/wedding" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
         </div>
+        {/* Full Gallery */}
+        <Link href="/portfolio/all">
+          <Parallax strength={70} bgImage="/full-width-img.webp" className="mb-24 hover:opacity-85 duration-300">
+            <div className="min-h-32 flex justify-center items-center">
+              <Link href="portfolio/all" className="text-2xl text-black bg-sage hover:text-sugar hover:bg-mocha hover:opacity-100 px-8 py-4 rounded-md duration-300">See Full Gallery</Link>
+            </div>
+          </Parallax>
+        </Link>
       </div>
     );
   }
