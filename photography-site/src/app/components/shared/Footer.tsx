@@ -9,7 +9,7 @@ const Footer = () => {
 
     return (
       <footer className="">
-        <Parallax strength={300} bgImage="/leah-senior-pic.webp">
+        <Parallax strength={300} bgImage="/mary-footer-2.jpg">
             <div className="min-h-52 relative">
                 <div className="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div className="relative flex gap-16 text-sugar items-center mx-20 pt-16">
