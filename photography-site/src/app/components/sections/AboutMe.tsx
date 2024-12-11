@@ -21,8 +21,8 @@ const AboutMe = () => {
                 </h3>
 
             </div>
-            <div className="w-1/2 relative block">
-                <Image src="/photographer.png" alt="Photographer Mary Mills" fill className="object-contain"/>
+            <div className="w-3/5 relative block">
+                <Image src="/about-me-pics/mary-landscape-2.jpg" alt="Photographer Mary Mills" fill className="object-contain"/>
             </div>
         </div>
         
