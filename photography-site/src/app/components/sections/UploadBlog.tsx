@@ -17,7 +17,7 @@ const UploadBlog: React.FC = () => {
     const handleUpload = async (files: {file: File; alt: string; categories: string[] } []) => {
         try {
             setLoading(true);
-            let images: string[] =[];
+            const images: string[] =[];
             await Promise.all(
                 files.map(async ({ file, alt, categories }) => {
                     const downloadUrl = await uploadFile(file, "images");

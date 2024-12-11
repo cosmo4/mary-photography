@@ -11,7 +11,7 @@ const RecentWork = () => {
         <div className="flex gap-14 mx-60 mt-[-25px] mb-10 text-center">
           {/* Senior Category */}
           <div className="w-[300px] group">
-            <Link href="/portfolio" className="relative block overflow-hidden rounded-md aspect-[4/5]">
+            <Link href="/portfolio/Senior" className="relative block overflow-hidden rounded-md aspect-[4/5]">
               <Image
                 src="/senior-category.webp"
                 alt="Senior student"
@@ -21,7 +21,7 @@ const RecentWork = () => {
             </Link>
             <p className="mt-2 text-2xl font-semibold">Senior</p>
             <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
+                <Link href="/portfolio/senior" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
                 See Album
                 </Link>
             </div>
@@ -29,7 +29,7 @@ const RecentWork = () => {
 
           {/* Family Category */}
           <div className="w-[300px] group">
-            <Link href="/portfolio" className="relative block overflow-hidden rounded-md aspect-[4/5]">
+            <Link href="/portfolio/family" className="relative block overflow-hidden rounded-md aspect-[4/5]">
               <Image
                 src="/family-category.webp"
                 alt="Young family"
@@ -39,7 +39,7 @@ const RecentWork = () => {
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Families</p>
             <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
+                <Link href="/portfolio/family" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
                 See Album
                 </Link>
             </div>
@@ -47,7 +47,7 @@ const RecentWork = () => {
 
           {/* Couple Category */}
           <div className="w-[300px] group">
-            <Link href="/portfolio" className="relative block overflow-hidden rounded-md aspect-[4/5]">
+            <Link href="/portfolio/couple" className="relative block overflow-hidden rounded-md aspect-[4/5]">
               <Image
                 src="/couple-category.webp"
                 alt="Couple"
@@ -57,7 +57,7 @@ const RecentWork = () => {
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Couples</p>
             <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
+                <Link href="/portfolio/couple" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
                 See Album
                 </Link>
             </div>
@@ -65,7 +65,7 @@ const RecentWork = () => {
 
           {/* Wedding Category */}
           <div className="w-[300px] group">
-            <Link href="/portfolio" className="relative block overflow-hidden rounded-md aspect-[4/5]">
+            <Link href="/portfolio/wedding" className="relative block overflow-hidden rounded-md aspect-[4/5]">
               <Image
                 src="/wedding-category.webp"
                 alt="Bride and Groom"
@@ -75,7 +75,7 @@ const RecentWork = () => {
             </Link>
             <p className="mt-2 text-center text-2xl font-semibold">Weddings</p>
             <div className="w-[150px] mx-auto outline outline-1 outline-gray-500">
-                <Link href="/portfolio" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
+                <Link href="/portfolio/wedding" className="block text-xl mt-2 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300">
                 See Album
                 </Link>
             </div>
