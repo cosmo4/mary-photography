@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/app/lib/firebase";
 
-const useFetchPortfolioImages = (category?: string, excludeCategory?: string) => {
-    const [images, setImages] = useState<{ src: string; alt: string; width: number; height: number;}[]>([]);
+const useFetchPortfolioImages = ({
+  category,
+  excludeCategory,
+  }: {
+    category?: string;
+    excludeCategory?: string;
+}) => {
+    const [images, setImages] = useState<{ src: string; alt: string; width: number; height: number; isSelected: boolean }[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
@@ -13,52 +19,45 @@ const useFetchPortfolioImages = (category?: string, excludeCategory?: string) =>
         setError(null);
   
         try {
-          // Reference to the Firestore collection
           const collectionRef = collection(db, "images");
+          const querySnapshot = await getDocs(collectionRef);
   
-          let q;
-  
-          if (excludeCategory) {
-            // Query to exclude images containing a specific category
-            q = query(
-              collectionRef,
-              where("categories", "not-in", [excludeCategory])
-            );
-          } else if (category) {
-            // Query to fetch images with a specific category
-            q = query(
-              collectionRef,
-              where("categories", "array-contains", category)
-            );
-          } else {
-            // Default query to fetch all images
-            q = query(collectionRef);
-          }
-  
-          const querySnapshot = await getDocs(q);
-
           const promises = querySnapshot.docs.map(async (doc) => {
             const data = doc.data();
-            const src = data.src as string;
+            const src = data.src;
             const alt = data.alt || "Image";
+            const categories = data.categories || [];
   
-            // Dynamically get the image dimensions
+            // Dynamically get image dimensions
             const img = new Image();
             img.src = src;
-            
-            await new Promise((resolve) => (img.onload = resolve)); // Wait until the image loads
+            await new Promise((resolve) => (img.onload = resolve));
   
+            // Return the image object
             return {
               src,
               alt,
               width: img.width,
               height: img.height,
+              categories,
+              isSelected: false,
             };
           });
-
-          const imagesData = await Promise.all(promises);
   
-          setImages(imagesData);
+          const allImages = await Promise.all(promises);
+  
+          // Filter images based on `category` and `excludeCategory`
+          const filteredImages = allImages.filter((image) => {
+            if (excludeCategory && image.categories.includes(excludeCategory)) {
+              return false;
+            }
+            if (category && !image.categories.includes(category)) {
+              return false;
+            }
+            return true;
+          });
+  
+          setImages(filteredImages);
         } catch (error) {
           console.error("Error fetching images:", error);
           setError("Failed to fetch images.");

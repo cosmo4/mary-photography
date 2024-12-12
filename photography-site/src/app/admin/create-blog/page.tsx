@@ -1,6 +1,6 @@
 import UploadBlog from "@/app/components/sections/UploadBlog";
 
-const ManageBlog = () => {
+const CreateBlog = () => {
     return(
         <div className="w-4/5 mx-auto min-h-screen text-gray-700">
             <UploadBlog />
@@ -8,4 +8,4 @@ const ManageBlog = () => {
     )
 }
 
-export default ManageBlog;
+export default CreateBlog;

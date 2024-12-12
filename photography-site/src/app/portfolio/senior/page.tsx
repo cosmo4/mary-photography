@@ -2,7 +2,7 @@ import FetchCategoryImages from "@/app/components/shared/FetchImageByCategory";
 
 const SeniorPage = () => {
     return (
-        <FetchCategoryImages category="Senior" />
+        <FetchCategoryImages category="Senior" excludeCategory="Blog" />
     )
 }
 

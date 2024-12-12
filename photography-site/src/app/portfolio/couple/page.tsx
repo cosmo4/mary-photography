@@ -2,7 +2,7 @@ import FetchCategoryImages from "@/app/components/shared/FetchImageByCategory";
 
 const CouplePage = () => {
     return (
-        <FetchCategoryImages category="Couple" />
+        <FetchCategoryImages category="Couple" excludeCategory="Blog"/>
     )
 }
 

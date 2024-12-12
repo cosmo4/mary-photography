@@ -2,11 +2,50 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Parallax } from "react-parallax";
+import { fetchPrices } from "../lib/firestore";
+
+interface Prices {
+  id: string;
+  families: string;
+  seniors: string;
+  engagements: string;
+  weddings: string;
+}
 
 export default function Investment() {
-    return (
-      <div className="min-h-screen text-gray-600">
+  const [prices, setPrices] = useState<Prices>({
+    id: "",
+    families: "",
+    seniors: "",
+    engagements: "",
+    weddings: "",
+  });
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+      const fetchPrice = async () => {
+          const result =  await fetchPrices();
+          if (result) {
+              setPrices({
+                  id: result.id || "",
+                  seniors: result.seniors || "",
+                  families: result.families || "",
+                  engagements: result.engagements || "",
+                  weddings: result.weddings || "",
+              });
+          }
+          setLoading(false);
+      }
+
+      fetchPrice();
+  }, []);
+
+  
+  return (
+    <div className="min-h-screen text-gray-600">
+        {loading && <p>Loading...</p>}
         <div className="grid grid-cols-3 gap-4 w-2/3 mx-auto my-20">
           <p className="text-6xl">CREATING <span className="italic">MEMORIES TOGETHER</span></p>
           <Image src="/leah-investment.jpg" alt="Senior in grass" width={500} height={800} />
@@ -25,7 +64,7 @@ export default function Investment() {
               <li>Printing rights</li>
             </ul>
             <p>Price:</p>
-            <p className="text-3xl">$250</p>
+            <p className="text-3xl">{prices.seniors}</p>
           </div>
           <div className="mx-auto">
             <p className="mb-16 text-4xl">FAMILES</p>
@@ -36,7 +75,7 @@ export default function Investment() {
               <li>Printing rights</li>
             </ul>
             <p>Price:</p>
-            <p className="text-3xl">$300</p>
+            <p className="text-3xl">{prices.families}</p>
           </div>
           <div className="mx-auto">
             <p className="mb-5 text-4xl">ENGAGEMENT/ BRIDALS</p>
@@ -47,7 +86,7 @@ export default function Investment() {
               <li>Printing rights</li>
             </ul>
             <p>Price:</p>
-            <p className="text-3xl">$300</p>
+            <p className="text-3xl">{prices.engagements}</p>
           </div>
           <div className="mx-auto">
             <p className="mb-16 text-4xl">WEDDINGS</p>
@@ -58,7 +97,7 @@ export default function Investment() {
               <li>Printing rights</li>
             </ul>
             <p>Price:</p>
-            <p className="text-3xl">Starting at $1,000</p>
+            <p className="text-3xl">{prices.weddings}</p>
           </div>
         </div>
         <div className="relative">

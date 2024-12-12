@@ -114,10 +114,7 @@ button.next {
   opacity: 50%;
 }
 
-.ReactGridGallery_tile-viewport {
-  transition-duration: 300ms;
-}
-
-.ReactGridGallery_tile-viewport:hover {
-  opacity: 90%;
+pre {
+  font-family: 'EB Garamond', Arial, Helvetica, sans-serif;
+  
 }

@@ -17,7 +17,7 @@ const UploadBlog: React.FC = () => {
     const handleUpload = async (files: {file: File; alt: string; categories: string[] } []) => {
         try {
             setLoading(true);
-            const images: string[] =[];
+            const images: string[] = [];
             await Promise.all(
                 files.map(async ({ file, alt, categories }) => {
                     const downloadUrl = await uploadFile(file, "images");
@@ -40,7 +40,7 @@ const UploadBlog: React.FC = () => {
 
     return (
         <div>
-            <GoBack path="/admin"/>
+            <GoBack path="/admin/"/>
             <h2 className="text-5xl text-gray-600 my-10">Manage Blog</h2>
             <div className="w-4/5 mx-auto mb-24">
                 <div className="flex flex-col w-4/5">
@@ -72,7 +72,7 @@ const UploadBlog: React.FC = () => {
 
                 <ImageUploader onUpload={handleUpload} actionText="Upload Blog Post"/>
                 <p className="text-lg">* BLOG MUST BE SELECTED AS ONE OF THE CATEGORIES *</p>
-                <p className="text-lg">* Blog Thumbnail image will be first image selected for upload</p>
+                <p className="text-lg">* Blog Thumbnail image will be last image selected for upload</p>
 
                 {/* Loading Indicator */}
                 {loading && (

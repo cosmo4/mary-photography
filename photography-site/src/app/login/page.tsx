@@ -15,6 +15,7 @@ const LoginPage: React.FC = () => {
       await login(email, password);
       router.push("/admin");
     } catch (error) {
+      alert("Invalid email or password")
       setError("Invalid email or password");
       throw error;
     }
