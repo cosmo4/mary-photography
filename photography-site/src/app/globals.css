@@ -113,3 +113,8 @@ button.next {
 .embla__button:hover {
   opacity: 50%;
 }
+
+pre {
+  font-family: 'EB Garamond', Arial, Helvetica, sans-serif;
+  
+}

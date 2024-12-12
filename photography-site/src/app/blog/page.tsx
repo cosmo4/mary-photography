@@ -31,7 +31,7 @@ const BlogPage: React.FC = () => {
             <h2 className="text-2xl font-semibold mb-2 text-gray-600">{blog.title}</h2>
 
             {/* Description */}
-            <p className="text-xl mb-4">{blog.content.slice(0, 100)}...</p>
+            <p className="text-xl mb-4">{blog.content.slice(0, 150)}...</p>
 
             {/* Link to full blog */}
             <Link href={`/blog/${blog.slug}`} className="text-gray-800 text-2xl hover:text-sugar duration-300 bg-sage px-3 py-1 hover:bg-mocha rounded-md my-2">Read More</Link>

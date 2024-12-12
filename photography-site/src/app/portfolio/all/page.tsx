@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import GoBack from "@/app/components/shared/GoBack";
 import { Gallery } from "react-grid-gallery";
 import useFetchPortfolioImages from "@/app/hooks/useFetchPortfolioImages";
+import ImageModal from "@/app/components/shared/ImageModal";
 
 const FetchAllImages: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const { images, loading, error } = useFetchPortfolioImages({ excludeCategory: "Blog"});
 
   return (
@@ -35,6 +38,17 @@ const FetchAllImages: React.FC = () => {
           enableImageSelection={false}
           rowHeight={700}
           margin={2}
+          onClick={(index) => {
+            setSelectedImage(images[index]);
+            setIsModalOpen(true);
+          }}
+        />
+
+        <ImageModal
+          isOpen={isModalOpen}
+          imageSrc={selectedImage?.src || ""}
+          altText={selectedImage?.alt || "Image"}
+          onClose={() => setIsModalOpen(false)}
         />
       </div>
     </div>

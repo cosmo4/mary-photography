@@ -1,6 +1,26 @@
 import { deleteObject, ref } from "firebase/storage";
-import { doc, setDoc, serverTimestamp, collection, where, query, getDocs, updateDoc, deleteDoc } from "firebase/firestore"
+import { doc, setDoc, serverTimestamp, collection, where, query, getDocs, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc, Timestamp } from "firebase/firestore"
 import { db, storage } from "./firebase";
+
+interface Blog {
+    id: string;
+    title: string;
+    imageThumbnail: string;
+    content: string;
+    categories: string[];
+    images: string[];
+    isPublished: boolean;
+    slug: string;
+    publishedAt: Timestamp;
+  }
+
+  interface BlogImage {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    isSelected: boolean;
+  }
 
 const saveToFirestore = async (
     downloadURL: string,
@@ -31,7 +51,13 @@ const fetchBlogBySlug = async (slug: string) => {
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-            const blog = querySnapshot.docs[0].data();
+            const doc = querySnapshot.docs[0];
+            const data = doc.data();
+            const blog = {
+                ...(data as Blog),
+                id: doc.id,
+                isSelected: false,
+            }
             return blog;
         } else {
             console.error("Blog not found with specified slug.");
@@ -72,7 +98,7 @@ const saveBlogToFirestore = async (
         await setDoc(docRef, blogPostDoc);
         console.log("Blog document written successfully!");
     } catch (error) {
-        console.log("Failed to upload blog post: ", error)
+        console.error("Failed to upload blog post: ", error)
         throw error;
     }
 }
@@ -114,7 +140,7 @@ const savePricesToFirestore = async (
         await updateDoc(docRef, pricesPostDoc);
         console.log("Prices updated successfully")
     } catch (error) {
-        console.log("Error updating prices: ", error)
+        console.error("Error updating prices: ", error)
         throw error;
     }
 
@@ -142,9 +168,89 @@ const deleteImageFromCloud = async (imageUrl: string, documentId?: string) => {
         }
         console.log("Image successfully deleted from storage and firestore.");
     } catch (error) {
-        console.log("Error deleting images: ", error);
+        console.error("Error deleting images: ", error);
+        throw error;
+    }
+
+}
+
+const deleteImageFromBlog = async (blogId: string, thumbnail: string, imageSrcs: string[]) => {
+    try {
+        const blogRef= doc(db, "blog_posts", blogId);
+        await updateDoc(blogRef, {
+            images: arrayRemove(...imageSrcs),
+        });
+    
+        console.log("Images removed from the blog document successfully.");
+
+        const blogDoc = await getDoc(blogRef);
+
+        if (blogDoc.exists()) {
+        const updatedImages = blogDoc.data().images || [];
+
+        // Check if the thumbnail is still present in the `images` array
+        if (!updatedImages.includes(thumbnail)) {
+            // Update the `imageThumbnail` to the first image in the array, if available
+            const newThumbnail = updatedImages[0] || "";
+
+            await updateDoc(blogRef, {
+            imageThumbnail: newThumbnail,
+            });
+        } else {
+            console.log("Thumbnail remains unchanged.");
+        }
+    } else {
+      console.log("Blog document not found.");
+    }
+    } catch (error) {
+        console.error("Error removing images from the blog document: ", error);
+    }
+}
+
+const updateBlogImages = async (blogId: string, newImages: string[]) => {
+    try {
+        const blogRef = doc(db, "blog_posts", blogId);
+        await updateDoc(blogRef, {
+            images: arrayUnion(...newImages),
+        });
+        console.log("Images updated successfully");
+    } catch (error) {
+        console.error("Failed to upload new blog images: ", error);
+    }
+}
+
+const updateBlogText = async (blogId: string, title: string, content: string) => {
+    try {
+        const blogRef = doc(db, "blog_posts", blogId);
+        await updateDoc(blogRef, {
+            title: title,
+            content: content,
+        });
+        console.log("Blog text updated successfully");
+    } catch (error) {
+        console.error("Failed to update blog text: ", error);
+    }
+}
+
+const deleteBlogPost = async (blogId: string) => {
+    try {
+        const blogRef = doc(db, "blog_posts", blogId);
+        await deleteDoc(blogRef);
+    } catch (error) {
+        console.error("Error deleting blog post: ", error);
         throw error;
     }
 }
 
-export { saveToFirestore, fetchBlogBySlug, saveBlogToFirestore, fetchPrices, savePricesToFirestore, deleteImageFromCloud };
+export { 
+    saveToFirestore, 
+    fetchBlogBySlug, 
+    saveBlogToFirestore, 
+    fetchPrices, 
+    savePricesToFirestore, 
+    deleteImageFromCloud, 
+    updateBlogImages, 
+    updateBlogText, 
+    deleteImageFromBlog, 
+    deleteBlogPost 
+};

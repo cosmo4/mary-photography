@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import GoBack from "@/app/components/shared/GoBack";
 import useFetchImages from "@/app/hooks/useFetchPortfolioImages";
 import { Gallery } from "react-grid-gallery";
+import ImageModal from "./ImageModal";
 
 const FetchCategoryImages: React.FC<{ category: string; excludeCategory: string }> = ({ category, excludeCategory }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const { images, loading, error } = useFetchImages({ category, excludeCategory });
 
   return (
@@ -34,7 +37,17 @@ const FetchCategoryImages: React.FC<{ category: string; excludeCategory: string 
           }))}
           enableImageSelection={false}
           rowHeight={700}
-          margin={2}
+          margin={2}onClick={(index) => {
+            setSelectedImage(images[index]);
+            setIsModalOpen(true);
+          }}
+        />
+
+        <ImageModal
+          isOpen={isModalOpen}
+          imageSrc={selectedImage?.src || ""}
+          altText={selectedImage?.alt || "Image"}
+          onClose={() => setIsModalOpen(false)}
         />
       </div>
     </div>
