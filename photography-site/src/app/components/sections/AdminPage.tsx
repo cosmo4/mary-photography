@@ -43,15 +43,17 @@ const AdminPage: React.FC = () => {
 
 
     return(
-        <div className="w-4/5 mx-auto my-24 min-h-lvh">
+        <div className="w-2/3 mx-auto my-24 min-h-lvh">
             <div className="flex gap-28 items-center mb-24">
                 <p className="text-4xl">Hello Mary!</p>
-                <button onClick={handleLogout} className="border border-mocha px-4 py-2 text-2xl rounded-md ml-auto hover:bg-bone">Logout</button>
+                <button onClick={handleLogout} className="border border-mocha px-4 py-2 text-2xl rounded-md ml-auto hover:bg-black hover:text-sugar duration-300">Logout</button>
             </div>
-            <div className="flex gap-24 justify-center text-2xl text-sugar">
-                <Link href="/admin/manage-blog" className="bg-oak px-10 py-5 rounded-md hover:bg-mocha">Manage Blog</Link>
-                <Link href="/admin/manage-portfolio" className="bg-oak px-10 py-5 rounded-md hover:bg-mocha">Manage Portfolio</Link>
-                <Link href="/admin/manage-prices" className="bg-oak px-10 py-5 rounded-md hover:bg-mocha">Manage Prices</Link>
+            <div className="grid grid-cols-2 gap-14 text-3xl text-black text-center w-2/3 mx-auto">
+                <Link href="/admin/add-to-portfolio" className="bg-bone py-10 rounded-md hover:bg-wheat duration-300">Add to Portfolio</Link>
+                <Link href="/admin/update-portfolio" className="bg-bone py-10 rounded-md hover:bg-wheat duration-300">Update Portfolio</Link>
+                <Link href="/admin/create-blog" className="bg-sage py-10 rounded-md hover:bg-oak hover:text-sugar duration-300">Create Blog</Link>
+                <Link href="/admin/update-blog" className="bg-sage py-10 rounded-md hover:bg-oak hover:text-sugar duration-300">Update / Delete Blog</Link>
+                <Link href="/admin/manage-investment" className="bg-wheat py-10 rounded-md hover:bg-mocha hover:text-sugar duration-300 translate-x-[60%]">Manage Prices</Link>
 
             </div>
             

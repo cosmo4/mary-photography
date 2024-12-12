@@ -1,5 +1,6 @@
-import { doc, setDoc, serverTimestamp, collection, where, query, getDocs } from "firebase/firestore"
-import { db } from "./firebase";
+import { deleteObject, ref } from "firebase/storage";
+import { doc, setDoc, serverTimestamp, collection, where, query, getDocs, updateDoc, deleteDoc } from "firebase/firestore"
+import { db, storage } from "./firebase";
 
 const saveToFirestore = async (
     downloadURL: string,
@@ -42,6 +43,7 @@ const fetchBlogBySlug = async (slug: string) => {
     }
 };
 
+
 const saveBlogToFirestore = async (
     // isPublished: boolean,
     // categories: string[],
@@ -53,7 +55,7 @@ const saveBlogToFirestore = async (
     const slugBase = title.toLowerCase().replace(/\s+/g, "-");
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const slug = `${slugBase}-${randomNum}`;
-
+    
     try {
         const blogPostDoc = {
             title: title,
@@ -65,7 +67,7 @@ const saveBlogToFirestore = async (
             categories: [""],
             publishedAt: serverTimestamp()
         }
-
+        
         const docRef = doc(db, "blog_posts", `${Date.now()}`);
         await setDoc(docRef, blogPostDoc);
         console.log("Blog document written successfully!");
@@ -75,4 +77,74 @@ const saveBlogToFirestore = async (
     }
 }
 
-export { saveToFirestore, fetchBlogBySlug, saveBlogToFirestore };
+const fetchPrices = async () => {
+    try {
+        const pricesRef = collection(db, "prices");
+        const q = query(pricesRef);
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            const prices = querySnapshot.docs[0].data();
+            return prices;
+        } else {
+            console.error("Unable to load prices.");
+            return null;
+        }
+    } catch (error) {
+        console.error("Error fetching prices: ", error);
+        return null;
+    }
+}
+
+const savePricesToFirestore = async (
+    families: string,
+    seniors: string,
+    engagements: string,
+    weddings: string,
+) => {
+    try {
+        const pricesPostDoc = {
+            families: families,
+            seniors: seniors,
+            engagements: engagements,
+            weddings: weddings,
+        }
+
+        const docRef = doc(db, "prices", "46WTtpUrJXDYFLhijjgd");
+        await updateDoc(docRef, pricesPostDoc);
+        console.log("Prices updated successfully")
+    } catch (error) {
+        console.log("Error updating prices: ", error)
+        throw error;
+    }
+
+}
+
+const deleteImageFromCloud = async (imageUrl: string, documentId?: string) => {
+    try {
+        const imageRef = ref(storage, decodeURIComponent(new URL(imageUrl).pathname.split('/o/')[1]));
+        await deleteObject(imageRef);
+
+        if (documentId) {
+            const docRef = doc(db, "images", documentId);
+            await deleteDoc(docRef);
+        } else {
+            const imagesRef = collection(db, "images");
+            const q = query(imagesRef, where("src", "==", imageUrl));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                const docToDelete = querySnapshot.docs[0].ref;
+                await deleteDoc(docToDelete);
+            } else {
+                throw new Error("Image document not found in Firestore");
+            }
+        }
+        console.log("Image successfully deleted from storage and firestore.");
+    } catch (error) {
+        console.log("Error deleting images: ", error);
+        throw error;
+    }
+}
+
+export { saveToFirestore, fetchBlogBySlug, saveBlogToFirestore, fetchPrices, savePricesToFirestore, deleteImageFromCloud };

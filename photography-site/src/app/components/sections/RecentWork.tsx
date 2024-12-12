@@ -11,7 +11,7 @@ const RecentWork = () => {
         <div className="flex gap-14 mx-60 mt-[-25px] mb-10 text-center">
           {/* Senior Category */}
           <div className="w-[300px] group">
-            <Link href="/portfolio/Senior" className="relative block overflow-hidden rounded-md aspect-[4/5]">
+            <Link href="/portfolio/senior" className="relative block overflow-hidden rounded-md aspect-[4/5]">
               <Image
                 src="/senior-category.webp"
                 alt="Senior student"
