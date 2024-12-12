@@ -76,7 +76,7 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
             <pre className="text-xl my-5 whitespace-pre-wrap">{blog.content}</pre>
 
             <Gallery 
-                images={galleryImages.map((image, i) => ({
+                images={galleryImages.map((image) => ({
                     ...image,
                     customOverlay: (
                       <div

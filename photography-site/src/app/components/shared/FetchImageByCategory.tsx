@@ -19,7 +19,7 @@ const FetchCategoryImages: React.FC<{ category: string; excludeCategory: string 
         {error && <p>Error: {error}</p>}
 
         <Gallery
-          images={images.map((image, i) => ({
+          images={images.map((image) => ({
             ...image,
             customOverlay: (
               <div

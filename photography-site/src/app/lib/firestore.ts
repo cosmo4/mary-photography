@@ -14,14 +14,6 @@ interface Blog {
     publishedAt: Timestamp;
   }
 
-  interface BlogImage {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    isSelected: boolean;
-  }
-
 const saveToFirestore = async (
     downloadURL: string,
     alt: string,

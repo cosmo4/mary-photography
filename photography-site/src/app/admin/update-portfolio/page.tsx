@@ -51,7 +51,7 @@ const UpdatePortfolioPage: React.FC = () => {
 
         {imagesPortfolio.length > 0 && (
           <Gallery
-          images={imagesPortfolio.map((image, i) => ({
+          images={imagesPortfolio.map((image) => ({
             ...image,
             customOverlay: (
               <div

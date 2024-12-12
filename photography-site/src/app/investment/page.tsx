@@ -42,8 +42,10 @@ export default function Investment() {
       fetchPrice();
   }, []);
 
-    return (
-      <div className="min-h-screen text-gray-600">
+  
+  return (
+    <div className="min-h-screen text-gray-600">
+        {loading && <p>Loading...</p>}
         <div className="grid grid-cols-3 gap-4 w-2/3 mx-auto my-20">
           <p className="text-6xl">CREATING <span className="italic">MEMORIES TOGETHER</span></p>
           <Image src="/leah-investment.jpg" alt="Senior in grass" width={500} height={800} />
