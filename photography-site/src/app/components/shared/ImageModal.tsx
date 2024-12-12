@@ -12,25 +12,10 @@ interface ImageModalProps {
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, altText, onClose }) => {
   const [showAnimation, setShowAnimation] = useState(false);
-  const [imageDimensions, setImageDimensions] = useState<{ width: number; height: number } | null>(null);
 
   useEffect(() => {
-    const fetchImageDimensions = async () => {
-      if (imageSrc) {
-        const img = new window.Image();
-        img.src = imageSrc;
-        await new Promise((resolve) => (img.onload = resolve));
-
-        setImageDimensions({
-          width: img.naturalWidth,
-          height: img.naturalHeight,
-        });
-      }
-    };
-
     if (isOpen) {
       setShowAnimation(true);
-      fetchImageDimensions();
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
