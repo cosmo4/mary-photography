@@ -2,7 +2,7 @@ import FetchCategoryImages from "@/app/components/shared/FetchImageByCategory";
 
 const FamilyPage = () => {
     return (
-        <FetchCategoryImages category="Family" />
+        <FetchCategoryImages category="Family" excludeCategory="Blog" />
     )
 }
 
