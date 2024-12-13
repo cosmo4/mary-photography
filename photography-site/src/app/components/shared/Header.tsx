@@ -69,19 +69,19 @@ const Header = () => {
             <nav className={`${
               isMenuOpen ? "flex" : "hidden"
             } flex flex-col mt-28 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:ml-auto`}>
-              <Link href="/" className="underline-hover hover:text-black">
+              <Link href="/" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/portfolio" className="underline-hover hover:text-black">
+              <Link href="/portfolio" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Portfolio
               </Link>
-              <Link href="/about" className="underline-hover hover:text-black">
+              <Link href="/about" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 About
               </Link>
               
             </nav>
 
-            <Link href="/" className={`${
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className={`${
               isMenuOpen ? "" : ""
             } text-center md:mx-28`}>
               <h1 className="text-5xl tracking-wider text-gray-600">Mary Mills</h1>
@@ -92,13 +92,13 @@ const Header = () => {
             <nav className={`${
               isMenuOpen ? "block" : "hidden"
             } flex flex-col mt-28 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:mr-auto`}>
-              <Link href="/blog" className="underline-hover hover:text-black">
+              <Link href="/blog" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Blog
               </Link>
-              <Link href="/investment" className="underline-hover hover:text-black">
+              <Link href="/investment" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Investment
               </Link>
-              <Link href="/contact" className="underline-hover hover:text-black">
+              <Link href="/contact" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </Link>
             </nav>

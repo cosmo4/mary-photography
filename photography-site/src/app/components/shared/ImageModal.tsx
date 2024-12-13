@@ -53,7 +53,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, altText, onCl
 
         <button
           onClick={onClose}
-          className="fixed top-5 right-20 text-white text-2xl bg-gray-600 rounded-full px-3 py-1 hover:bg-gray-400 duration-300"
+          className="fixed bottom-[10%] right-[45%] md:bottom-auto md:top-5 md:right-[2%] text-5xl text-white md:text-3xl bg-gray-600 rounded-full px-4 md:px-3 md:py-1 pt-1 pb-2 hover:bg-gray-400 duration-300"
         >
           ×
         </button>

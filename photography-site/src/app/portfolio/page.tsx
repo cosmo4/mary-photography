@@ -9,41 +9,41 @@ import { Parallax } from "react-parallax";
 
 const Portfolio = () => {
     return (
-      <div className="min-h-screen">
-        <div className="text-5xl flex bg-sage w-5/12 justify-center py-24">
+      <div className="min-h-screen w-full">
+        <div className="text-3xl text-center md:text-left md:text-5xl flex bg-sage md:w-5/12 justify-center py-16 md:py-24">
           <div>
             <h2 className="">RECENT</h2>
             <h2 className="italic">ADVENTURES</h2>
           </div>
         </div>
         {/* Senior Album */}
-        <div className="flex gap-36 items-center justify-center">
-          <div className="flex flex-col justify-center items-center gap-6 w-1/5">
+        <div className="flex flex-col-reverse md:flex-row md:gap-36 items-center justify-center mt-[50px]">
+          <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
             <p className="text-5xl">Seniors</p>
             <Link href="/portfolio/senior" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
-          <div className="relative mt-[-50px]">
+          <div className="relative md:mt-[-50px]">
             <Link href="/portfolio/senior" className="hover:opacity-80 duration-300 ">
               <Image src="/kellsiesenior24-103.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
         </div>
         {/* Family Album */}
-        <div className="flex gap-36 items-center justify-center my-32">
+        <div className="flex flex-col md:flex-row md:gap-36 items-center justify-center my-32">
           <div className="relative">
             <Link href="/portfolio/family" className="hover:opacity-80 duration-300 ">
               <Image src="/abby24-20.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
-          <div className="flex flex-col justify-center items-center gap-6 w-1/5">
+          <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
             <p className="text-5xl">Families</p>
             <Link href="/portfolio/family" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
         </div>
         
         {/* Couples Album */}
-        <div className="flex gap-36 items-center justify-center">
-          <div className="flex flex-col justify-center items-center gap-6 w-1/5">
+        <div className="flex flex-col-reverse md:flex-row md:gap-36 items-center justify-center">
+          <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
             <p className="text-5xl">Couples</p>
             <Link href="/portfolio/couple" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
@@ -54,25 +54,25 @@ const Portfolio = () => {
           </div>
         </div>
         {/* Weddings Album */}
-        <div className="flex gap-36 items-center justify-center my-32">
+        <div className="flex flex-col md:flex-row md:gap-36 items-center justify-center my-32">
           <div className="relative">
             <Link href="/portfolio/wedding" className="hover:opacity-80 duration-300 ">
               <Image src="/tateclass24-124.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
-          <div className="flex flex-col justify-center items-center gap-6 w-1/5">
+          <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
             <p className="text-5xl">Weddings</p>
             <Link href="/portfolio/wedding" className="text-2xl border border-black rounded-md px-4 py-1 hover:bg-oak hover:text-sugar duration-300">See Album</Link>
           </div>
         </div>
-        {/* Full Gallery */}
-        <Link href="/portfolio/all">
-          <Parallax strength={70} bgImage="/full-width-img.webp" className="mb-24 hover:opacity-85 duration-300">
+        {/* Full Gallery*/}
+        <div>
+          <Parallax strength={70} bgImage="/full-width-img.webp" bgImageStyle={{objectFit: "cover", height: "150%", width: "auto"}} className="mb-24 hover:opacity-85 duration-300">
             <div className="min-h-32 flex justify-center items-center">
               <Link href="portfolio/all" className="text-2xl text-black bg-sage hover:text-sugar hover:bg-mocha hover:opacity-100 px-8 py-4 rounded-md duration-300">See Full Gallery</Link>
             </div>
           </Parallax>
-        </Link>
+        </div>
       </div>
     );
   }
