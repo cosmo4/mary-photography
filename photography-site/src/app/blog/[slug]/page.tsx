@@ -6,6 +6,7 @@ import { fetchBlogBySlug } from "@/app/lib/firestore";
 import { Gallery } from "react-grid-gallery";
 import GoBack from "@/app/components/shared/GoBack";
 import ImageModal from "@/app/components/shared/ImageModal";
+import useWindowSize from "@/app/hooks/useWindowSize";
 
 interface Blog {
     id: string;
@@ -35,7 +36,11 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
+    const size = useWindowSize();
+    const rowHeight = size.width >= 768 ? 500 : 200;
+
     useEffect(() => {
+        
         const fetchBlog = async () => {
             const result = await fetchBlogBySlug(slug);
             if (result) {
@@ -70,9 +75,9 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
 
 
     return (
-        <div className="w-1/2 mx-auto my-10 min-h-screen">
+        <div className="w-5/6 md:w-1/2 mx-auto mt-10 mb-32 min-h-screen">
             <GoBack path="/blog" />
-            <h2 className="text-5xl font-bold text-gray-600 text-center">{blog.title}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-600 text-center">{blog.title}</h2>
             <pre className="text-xl my-5 whitespace-pre-wrap">{blog.content}</pre>
 
             <Gallery 
@@ -93,7 +98,7 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
                     ),
                   }))} 
                 enableImageSelection={false} 
-                rowHeight={500}
+                rowHeight={rowHeight}
                 onClick={(index) => {
                 setSelectedImage(galleryImages[index]);
                 setIsModalOpen(true);

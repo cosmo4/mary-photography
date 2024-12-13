@@ -12,7 +12,7 @@ const UpdateBlogPage: React.FC = () => {
   return (
     <div className="w-4/5 mx-auto my-10 min-h-screen">
         <GoBack path="/admin" />
-        <h2 className="text-4xl text-gray-600 text-center">Update Blog</h2>
+        <h2 className="text-4xl md:text-5xl md:text-left text-gray-600 text-center mb-5">Update Blog</h2>
         {loading && <p>Loading blogs...</p>}
         {error && <p className="text-red-500">{error}</p>}
 

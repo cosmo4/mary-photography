@@ -26,7 +26,7 @@ const HoneyBookContactForm = () => {
   return (
     <div>
       {/* HoneyBook Widget Container */}
-      <div className="hb-p-665c777a3ef58b00084e9ffa-1 border border-gray-500 w-1/2 mx-auto"></div>
+      <div className="hb-p-665c777a3ef58b00084e9ffa-1 border border-gray-500 w-5/6 md:w-1/2 mx-auto"></div>
     </div>
   );
 };

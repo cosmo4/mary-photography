@@ -46,13 +46,13 @@ export const usePrevNextButtons = (
 type PropType = ComponentPropsWithRef<'button'>;
 
 export const PrevButton: React.FC<PropType> = (props) => (
-  <button {...props} className="embla__button embla__button--prev">
+  <button {...props} className="embla__button embla__button--prev hidden md:block">
     &#10094;
   </button>
 );
 
 export const NextButton: React.FC<PropType> = (props) => (
-  <button {...props} className="embla__button embla__button--next">
+  <button {...props} className="embla__button embla__button--next hidden md:block">
     &#10095;
   </button>
 );

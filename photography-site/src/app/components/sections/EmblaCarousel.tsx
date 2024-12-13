@@ -69,9 +69,9 @@ const EmblaCarousel: React.FC<PropType> = ({ options }) => {
   return (
     <section className="embla" ref={containerRef}>
       <div className="embla__controls">
-      <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+      <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}/>
         <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container h-75vh w-full">
+          <div className="embla__container h-[50vh] md:h-75vh w-full">
             {images.map((image, index) => (
               <div className="embla__slide relative" key={index}>
                 <Image src={image.src} alt={image.alt} layout='fill' objectFit='cover' className="embla__slide__img" />
@@ -80,7 +80,7 @@ const EmblaCarousel: React.FC<PropType> = ({ options }) => {
           </div>
         </div>
           
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled}/>
       </div>
     </section>
   );

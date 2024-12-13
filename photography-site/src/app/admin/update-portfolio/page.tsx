@@ -2,6 +2,7 @@
 
 import GoBack from "@/app/components/shared/GoBack";
 import useFetchPortfolioImages from "@/app/hooks/useFetchPortfolioImages";
+import useWindowSize from "@/app/hooks/useWindowSize";
 import { deleteImageFromCloud } from "@/app/lib/firestore";
 import { useEffect, useState } from "react";
 import { Gallery } from "react-grid-gallery";
@@ -12,6 +13,9 @@ const UpdatePortfolioPage: React.FC = () => {
     { src: string; alt: string; width: number; height: number; isSelected?: boolean }[]
   >([]);
   const [selectedImages, setSelectedImages] = useState<number[]>([]);
+
+  const size = useWindowSize();
+  const rowHeight = size.width >= 768 ? 300 : 200;
 
   useEffect(() => {
     if (!loading && !error && images.length > 0) {
@@ -43,8 +47,9 @@ const UpdatePortfolioPage: React.FC = () => {
   };
 
   return (
-    <div className="w-4/5 mx-auto min-h-screen">
-      <GoBack path="/portfolio" />
+    <div className="md:w-4/5 mx-auto min-h-screen">
+      <GoBack path="/admin" />
+      <h2 className="text-4xl md:text-5xl text-gray-600">Update Portfolio</h2>
       <div className="mt-5 mb-20">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
@@ -69,7 +74,7 @@ const UpdatePortfolioPage: React.FC = () => {
             ),
           }))}
             enableImageSelection={true}
-            rowHeight={300}
+            rowHeight={rowHeight}
             margin={2}
             onSelect={(index) => {
                 setImagesPortfolio((prev) =>

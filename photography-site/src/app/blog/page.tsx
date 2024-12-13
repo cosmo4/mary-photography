@@ -9,12 +9,12 @@ const BlogPage: React.FC = () => {
   const { blogs, loading, error } = useFetchBlogs();
 
   return (
-    <div className="w-4/5 mx-auto my-10 min-h-screen">
-      <h2 className="text-5xl mb-10 text-gray-600">Welcome to the Blog</h2>
+    <div className="md:w-4/5 mx-auto my-10 min-h-screen">
+      <h2 className="text-4xl text-center md:text-left md:w-full md:text-5xl mb-10 text-gray-600">Welcome to the Blog</h2>
       {loading && <p>Loading blogs...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:gridcols-3 gap-14">
+      <div className="grid grid-cols-1 w-5/6 mx-auto md:w-full md:grid-cols-2 lg:grid-cols-3 gap-14">
         {blogs.map((blog) => (
           <div key={blog.id} className="blog-card border-2 border-mocha p-8 rounded-md">
             <Link href={`/blog/${blog.slug}`}>

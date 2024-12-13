@@ -151,7 +151,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload, maxFiles = 30, 
                 value={altText}
                 onChange={(e) => setAltText(e.target.value)}
                 placeholder="Enter brief description for all images"
-                className="w-1/2 p-2 border border-gray-300 rounded"
+                className="w-full md:w-1/2 p-2 border border-gray-300 rounded"
               />
             </div>
 

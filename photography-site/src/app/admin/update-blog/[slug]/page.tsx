@@ -176,15 +176,15 @@ const UpdateBlogPostPage = ({ params }: { params: { slug: string } }) => {
     if (!blog) return <p className="w-1/2 mx-auto my-10 min-h-screen">Blog not found</p>;
 
     return (
-        <div className="w-1/2 mx-auto my-10 min-h-screen">
+        <div className="w-[90%] md:w-1/2 mx-auto my-10 min-h-screen">
             <GoBack path="/admin/update-blog" />
-            <h2 className="text-4xl text-center my-8">Update Blog</h2>
+            <h2 className="text-4xl text-center md:text-5xl md:text-left my-8 text-gray-600">Update Blog</h2>
             <div className="text-2xl flex flex-col justify-center mb-14">
                 <label htmlFor="title" className="mb-2">Blog Title:</label>
                 <input 
                     type="text" 
                     id="title" 
-                    className="text-xl border border-gray-400 p-2 rounded-md w-1/3 mb-10" 
+                    className="text-xl border border-gray-400 p-2 rounded-md md:w-1/3 mb-10" 
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)} 
                 />
