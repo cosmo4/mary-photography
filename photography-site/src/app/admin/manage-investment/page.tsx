@@ -73,7 +73,8 @@ const ManageInvestment = () => {
     return (
         <div className="min-h-screen w-4/5 mx-auto">
             <GoBack path="/admin"/>
-            <div className="grid grid-cols-4 w-5/6 mx-auto text-2xl text-gray-600 mt-14">
+            <h2 className="text-4xl w-5/6 mx-auto md:text-5xl text-gray-600">Update Prices</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 w-5/6 mx-auto text-2xl text-gray-600 mt-14">
                 <div className="w-5/6 mx-auto">
                     <label htmlFor="seniors">Seniors</label>
                     <input 
@@ -84,7 +85,7 @@ const ManageInvestment = () => {
                         pattern=".*\$.*"
                         title="The input must contain a $ symbol."
                         onChange={(e) => handleInputChange("seniors", e.target.value)}
-                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4"
+                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4 mb-7"
                         />
                 </div>
                 <div className="w-5/6 mx-auto">
@@ -97,7 +98,7 @@ const ManageInvestment = () => {
                         pattern=".*\$.*"
                         title="The input must contain a $ symbol."
                         onChange={(e) => handleInputChange("families", e.target.value)}
-                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4" 
+                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4 mb-7" 
                     />
                 </div>
                 <div className="w-5/6 mx-auto">
@@ -110,7 +111,7 @@ const ManageInvestment = () => {
                         pattern=".*\$.*"
                         title="The input must contain a $ symbol."
                         onChange={(e) => handleInputChange("engagements", e.target.value)}
-                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4" 
+                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4 mb-7" 
                     />
                 </div>
                 <div className="w-5/6 mx-auto">
@@ -123,7 +124,7 @@ const ManageInvestment = () => {
                         pattern=".*\$.*"
                         title="The input must contain a $ symbol."
                         onChange={(e) => handleInputChange("weddings", e.target.value)}
-                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4" 
+                        className="px-4 py-3 border border-gray-400 w-full rounded-md mt-4 mb-7" 
                     />
                 </div>
             </div>

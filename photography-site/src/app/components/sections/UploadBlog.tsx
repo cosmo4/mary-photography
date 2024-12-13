@@ -41,9 +41,9 @@ const UploadBlog: React.FC = () => {
     return (
         <div>
             <GoBack path="/admin"/>
-            <h2 className="text-5xl text-gray-600 my-10">Manage Blog</h2>
-            <div className="w-4/5 mx-auto mb-24">
-                <div className="flex flex-col w-4/5">
+            <h2 className="md:w-4/5 md:mx-auto text-4xl text-center md:text-left md:text-5xl text-gray-600 my-10">Create Blog Post</h2>
+            <div className="md:w-4/5 mx-auto mb-24">
+                <div className="flex flex-col md:w-4/5">
                     <label htmlFor="title" className="block text-2xl mb-2">
                         Title:
                     </label>
@@ -53,7 +53,7 @@ const UploadBlog: React.FC = () => {
                         placeholder="Enter Title" 
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="text-xl border border-gray-400 p-2 rounded-md mb-6 w-1/3"
+                        className="text-xl border border-gray-400 p-2 rounded-md mb-6 w-full md:w-1/3"
                         required
                     />
 

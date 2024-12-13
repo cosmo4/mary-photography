@@ -5,14 +5,18 @@ import GoBack from "@/app/components/shared/GoBack";
 import { Gallery } from "react-grid-gallery";
 import useFetchPortfolioImages from "@/app/hooks/useFetchPortfolioImages";
 import ImageModal from "@/app/components/shared/ImageModal";
+import useWindowSize from "@/app/hooks/useWindowSize";
 
 const FetchAllImages: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const { images, loading, error } = useFetchPortfolioImages({ excludeCategory: "Blog"});
 
+  const size = useWindowSize();
+  const rowHeight = size.width >= 768 ? 700 : 300;
+
   return (
-    <div className="w-4/5 mx-auto min-h-screen">
+    <div className="md:w-4/5 mx-auto min-h-screen">
       <GoBack path="/portfolio" />
       <div className="mt-5 mb-20">
         {loading && <p>Loading...</p>}
@@ -36,7 +40,7 @@ const FetchAllImages: React.FC = () => {
             ),
           }))}
           enableImageSelection={false}
-          rowHeight={700}
+          rowHeight={rowHeight}
           margin={2}
           onClick={(index) => {
             setSelectedImage(images[index]);

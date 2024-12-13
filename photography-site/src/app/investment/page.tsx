@@ -54,7 +54,7 @@ export default function Investment() {
         <div className="w-full bg-sage mb-16">
           <p className="text-center text-5xl tracking-widest py-16">INVESTMENT</p>
         </div>
-        <div className="grid grid-rows-4 gap-5 md:gap-0 md:grid-cols-4 text-2xl w-5/6 mx-auto mb-32">
+        <div className="grid grid-rows-4 md:grid-rows-1 gap-5 md:gap-0 md:grid-cols-4 text-2xl w-5/6 mx-auto mb-32">
           <div className="md:mx-auto outline outline-gray-400 p-2 md:outline-white md:p-0">
             <p className="mb-5 md:mb-16 text-3xl md:text-4xl">SENIORS</p>
             <ul className="list-disc ml-10 space-y-3 mb-10">
@@ -101,7 +101,7 @@ export default function Investment() {
           </div>
         </div>
         <div className="relative">
-          <Parallax strength={600} bgImage="/tall-parallax-1.jpg" bgImageStyle={{objectFit: "contain", height: "150%", width: "auto"}} className="md:w-2/5 mx-auto h-[70vh] md:h-[60vh] z-10 mb-[30vh]"></Parallax>
+          <Parallax strength={600} bgImage="/tall-parallax-1.jpg" bgImageStyle={{objectFit: "contain", width: "auto"}} className="md:w-2/5 mx-auto h-[70vh] md:h-[60vh] z-10 mb-[30vh]"></Parallax>
 
           <div className="transform absolute top-[17%] right-0 md:top-1/2 md:right-1/2 bg-sugar p-16 md:w-1/4 z-50">
             <p className="text-3xl md:text-4xl mb-8">HAVE SOMETHING ELSE IN <span className="italic">MIND</span> ?</p>
