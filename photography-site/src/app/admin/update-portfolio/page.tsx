@@ -44,7 +44,7 @@ const UpdatePortfolioPage: React.FC = () => {
 
   return (
     <div className="w-4/5 mx-auto min-h-screen">
-      <GoBack path="/portfolio" />
+      <GoBack path="/admin" />
       <div className="mt-5 mb-20">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}

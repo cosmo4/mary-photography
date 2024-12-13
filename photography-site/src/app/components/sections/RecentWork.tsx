@@ -4,11 +4,11 @@ import Image from "next/image"
 const RecentWork = () => {
     return (
         <section>
-        <div className="bg-bone flex gap-2 pl-20 pt-8 pb-20 w-[500px]">
+        <div className="bg-bone flex flex-col md:flex-row gap-2 text-center md:pl-20 pt-8 pb-20 md:w-[500px]">
           <p className="text-5xl">Recent </p>
           <p className="text-5xl italic">WORK</p>
         </div>
-        <div className="flex gap-14 mx-60 mt-[-25px] mb-10 text-center">
+        <div className="flex flex-col md:flex md:flex-row gap-14 md:mx-60 mt-[-25px] mb-10 text-center">
           {/* Senior Category */}
           <div className="w-[300px] group">
             <Link href="/portfolio/senior" className="relative block overflow-hidden rounded-md aspect-[4/5]">

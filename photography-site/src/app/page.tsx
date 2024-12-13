@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* <Image Carousel /> */}
-      <EmblaCarousel options={options} />
+      {/* <EmblaCarousel options={options} /> */}
 
       {/* Recent Work Section */}
       <RecentWork />

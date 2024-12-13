@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`antialiased`}
       >
         <Header />
-          <main className="pt-[130px]">{children}</main>
+          <main className="pt-[130px] w-full">{children}</main>
         <Footer />
       </body>
     </html>

@@ -40,7 +40,7 @@ const UploadBlog: React.FC = () => {
 
     return (
         <div>
-            <GoBack path="/admin/"/>
+            <GoBack path="/admin"/>
             <h2 className="text-5xl text-gray-600 my-10">Manage Blog</h2>
             <div className="w-4/5 mx-auto mb-24">
                 <div className="flex flex-col w-4/5">

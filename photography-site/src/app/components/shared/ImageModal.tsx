@@ -48,7 +48,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageSrc, altText, onCl
             src={imageSrc}
             alt={altText}
             fill
-            className="rounded-md max-w-[95vw] max-h-[95vh] object-contain my-auto"
+            className="rounded-md max-w-[95vw] max-h-[95vh] object-contain m-auto"
           />
 
         <button
