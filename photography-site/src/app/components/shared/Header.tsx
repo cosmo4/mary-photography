@@ -68,7 +68,7 @@ const Header = () => {
           <div className="flex md:flex md:justify-between justify-center md:items-center py-6 md:px-16">
             <nav className={`${
               isMenuOpen ? "flex" : "hidden"
-            } flex flex-col mt-28 ml-5 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:ml-auto`}>
+            } flex flex-col mt-28 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:ml-auto`}>
               <Link href="/" className="underline-hover hover:text-black">
                 Home
               </Link>
