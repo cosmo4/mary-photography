@@ -35,7 +35,7 @@ const Header = () => {
         >
           {/* Hamburger Menu for Small Screens */}
           <button
-            className="block md:hidden text-gray-700 fixed top-4 left-4"
+            className="block md:hidden text-gray-700 fixed top-11 left-4"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -65,10 +65,12 @@ const Header = () => {
             </svg>
           </button>
       
-          <div className="flex md:flex md:justify-between justify-center md:items-center py-6 md:px-16">
+          <div className={`${
+              isMenuOpen ? "grid-rows-2" : "grid-rows-1"
+            } grid grid-cols-5 text-center md:flex md:justify-between justify-center md:items-center py-6 md:px-16`}>
             <nav className={`${
               isMenuOpen ? "flex" : "hidden"
-            } flex flex-col mt-28 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:ml-auto`}>
+            } flex flex-col row-start-2 col-start-2 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:ml-auto`}>
               <Link href="/" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
@@ -83,15 +85,15 @@ const Header = () => {
 
             <Link href="/" onClick={() => setIsMenuOpen(false)} className={`${
               isMenuOpen ? "" : ""
-            } text-center md:mx-28`}>
-              <h1 className="text-5xl tracking-wider text-gray-600">Mary Mills</h1>
-              <p className="text-xl mt-1 tracking-widest text-gray-700">PHOTOGRAPHY</p>
+            } col-start-2 col-span-3 text-center md:mx-28`}>
+              <h1 className="text-4xl md:text-5xl tracking-wider text-gray-600">Mary Mills</h1>
+              <p className="text-lg md:text-xl mt-1 tracking-widest text-gray-700">PHOTOGRAPHY</p>
             </Link>
 
             
             <nav className={`${
               isMenuOpen ? "block" : "hidden"
-            } flex flex-col mt-28 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:mr-auto`}>
+            } flex flex-col row-start-2 col-start-4 gap-5 md:flex md:mt-0 md:flex-row md:space-x-8 text-gray-700 text-xl md:mr-auto`}>
               <Link href="/blog" className="underline-hover hover:text-black" onClick={() => setIsMenuOpen(false)}>
                 Blog
               </Link>

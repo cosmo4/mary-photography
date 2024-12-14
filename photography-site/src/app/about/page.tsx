@@ -5,8 +5,8 @@ import Image from "next/image";
 export default function About() {
     return (
       <div className="min-h-screen w-full md:w-4/5 mx-auto text-gray-600">
-        <h2 className="text-7xl tracking-widest mt-20">Hello!</h2>
-        <p className="text-4xl mt-2">I&apos;m so excited you&apos;re here!</p>
+        <h2 className="text-5xl md:text-7xl w-4/5 md:w-full mx-auto tracking-widest mt-20">Hello!</h2>
+        <p className="text-3xl md:text-4xl w-4/5 md:w-full mx-auto mt-2">I&apos;m so excited you&apos;re here!</p>
 
         <div className="my-24">
           <AboutMe />
@@ -26,12 +26,15 @@ export default function About() {
           </div>
         </div>
 
-        <div className="w-2/3 ml-5 md:w-1/3 md:ml-40">
-          <p className="text-3xl md:text-5xl mb-10">MAY THIS BE THE <span className="italic">BEGINNING</span> OF A BEAUTIFUL <span className="italic">FRIENDSHIP</span></p>
-          <Link href="/contact" className="text-xl ml-14  bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300 outline outline-1 outline-gray-500 rounded">Reach Out</Link>
-        </div>
-        <div className="w-1/2 md:w-2/5 relative md:block overflow-hidden ml-auto mr-5 md:mx-auto mt-[-130px] mb-48">
-          <Image src="/about-me-pics/mary-camera.jpg" alt="Camera close up" width={700} height={400} className="object-cover w-full ml-5 mr-2 md:mr-0 md:ml-14 " />
+        <div className="flex flex-col-reverse mb-40 md:block">
+          <div className="w-2/3 mx-auto md:w-1/3 md:ml-40">
+            <p className="text-3xl md:text-5xl mb-10">MAY THIS BE THE <span className="italic">BEGINNING</span> OF A BEAUTIFUL <span className="italic">FRIENDSHIP</span></p>
+            <Link href="/contact" className="text-xl mx-auto md:ml-14 bg-white text-black px-4 py-2 hover:bg-mocha hover:text-sugar duration-300 outline outline-1 outline-gray-500 rounded">Reach Out</Link>
+          </div>
+          <div className="w-5/6 md:w-2/5 relative md:block md:overflow-hidden md:ml-auto mx-auto md:mt-[-130px] mb-10 md:mb-48">
+            <Image src="/about-me-pics/mary-camera.jpg" alt="Camera close up" width={700} height={400} className="object-cover w-full md:ml-14 " />
+          </div>
+
         </div>
       </div>
     );
