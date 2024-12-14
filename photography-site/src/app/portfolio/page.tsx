@@ -67,7 +67,7 @@ const Portfolio = () => {
         </div>
         {/* Full Gallery*/}
         <div>
-          <Parallax strength={70} bgImage="/full-width-img.webp" bgImageStyle={{objectFit: "cover", height: "150%", width: "auto"}} className="mb-24 hover:opacity-85 duration-300">
+          <Parallax strength={70} bgImage="/full-width-img.webp" bgImageStyle={{objectFit: "cover", height: "175%", width: "auto"}} className="mb-24 hover:opacity-85 duration-300">
             <div className="min-h-32 flex justify-center items-center">
               <Link href="portfolio/all" className="text-2xl text-black bg-sage hover:text-sugar hover:bg-mocha hover:opacity-100 px-8 py-4 rounded-md duration-300">See Full Gallery</Link>
             </div>
