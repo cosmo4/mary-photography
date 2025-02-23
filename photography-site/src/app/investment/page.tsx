@@ -55,7 +55,7 @@ export default function Investment() {
           <p className="text-center text-5xl tracking-widest py-16">INVESTMENT</p>
         </div>
         <div className="grid grid-rows-4 md:grid-rows-1 gap-5 md:gap-0 md:grid-cols-4 text-2xl w-5/6 mx-auto mb-32">
-          <div className="md:mx-auto outline outline-gray-400 p-2 md:outline-white md:p-0">
+          <div className="md:mx-auto outline outline-gray-400 p-2 md:outline-none md:p-0">
             <p className="mb-5 md:mb-16 text-3xl md:text-4xl">SENIORS</p>
             <ul className="list-disc ml-10 space-y-3 mb-10">
               <li>1 to 2 outfits</li>
@@ -66,7 +66,7 @@ export default function Investment() {
             <p>Price:</p>
             <p className="text-3xl">{prices.seniors}</p>
           </div>
-          <div className="mx-auto outline outline-gray-400 p-2 md:outline-white md:p-0">
+          <div className="mx-auto outline outline-gray-400 p-2 md:outline-none md:p-0">
             <p className="mb-5 md:mb-16 text-3xl md:text-4xl">FAMILES</p>
             <ul className="list-disc ml-10 space-y-3 mb-2">
               <li>Up to 6 people ($10 extra for every additional person)</li>
@@ -77,7 +77,7 @@ export default function Investment() {
             <p>Price:</p>
             <p className="text-3xl">{prices.families}</p>
           </div>
-          <div className="mx-auto outline outline-gray-400 p-2 md:outline-white md:p-0">
+          <div className="mx-auto outline outline-gray-400 p-2 md:outline-none md:p-0">
             <p className="mb-5 text-3xl md:text-4xl">ENGAGEMENT/ BRIDALS</p>
             <ul className="list-disc ml-10 space-y-3 mb-11">
               <li>1 to 2 outfits</li>
@@ -88,7 +88,7 @@ export default function Investment() {
             <p>Price:</p>
             <p className="text-3xl mb-5 md:m-0">{prices.engagements}</p>
           </div>
-          <div className="md:mx-auto outline outline-gray-400 p-2 md:outline-white md:p-0">
+          <div className="md:mx-auto outline outline-gray-400 p-2 md:outline-none md:p-0">
             <p className="mb-5 md:mb-16 text-3xl md:text-4xl">WEDDINGS</p>
             <ul className="list-disc ml-10 space-y-3 mb-10">
               <li>5 hours</li>
