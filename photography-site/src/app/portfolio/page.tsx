@@ -32,7 +32,7 @@ const Portfolio = () => {
         <div className="flex flex-col md:flex-row md:gap-36 items-center justify-center my-32">
           <div className="relative">
             <Link href="/portfolio/family" className="hover:opacity-80 duration-300 ">
-              <Image src="/abby24-20.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
+              <Image src="/adamsfam24-46_websize.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
           <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
@@ -49,7 +49,7 @@ const Portfolio = () => {
           </div>
           <div className="relative">
             <Link href="/portfolio/couple" className="hover:opacity-80 duration-300 ">
-              <Image src="/DSC02612.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
+              <Image src="/braybraxengage-38.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
         </div>
@@ -57,7 +57,7 @@ const Portfolio = () => {
         <div className="flex flex-col md:flex-row md:gap-36 items-center justify-center my-32">
           <div className="relative">
             <Link href="/portfolio/wedding" className="hover:opacity-80 duration-300 ">
-              <Image src="/tateclass24-124.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
+              <Image src="/larandjordorem-65_websize.jpg" alt="Senior" width={1000} height={500} className="object-cover"/>
             </Link>
           </div>
           <div className="flex flex-col justify-center items-center gap-6 md:w-1/5 mt-5 md:mt-0">
