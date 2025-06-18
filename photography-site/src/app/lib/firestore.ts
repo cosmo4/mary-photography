@@ -38,8 +38,12 @@ const saveToFirestore = async (
 
 const fetchBlogBySlug = async (slug: string) => {
     try {
+        // Decode URL-encoded slug to match what's stored in the database
+        const decodedSlug = decodeURIComponent(slug);
+        console.log(`Fetching blog with original slug: "${slug}", decoded slug: "${decodedSlug}"`);
+
         const blogRef = collection(db, "blog_posts");
-        const q = query(blogRef, where("slug", "==", slug));
+        const q = query(blogRef, where("slug", "==", decodedSlug));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
@@ -50,9 +54,10 @@ const fetchBlogBySlug = async (slug: string) => {
                 id: doc.id,
                 isSelected: false,
             }
+            console.log(`Blog found: "${blog.title}"`);
             return blog;
         } else {
-            console.error("Blog not found with specified slug.");
+            console.error(`Blog not found with slug: "${decodedSlug}" (original: "${slug}")`);
             return null;
         }
     } catch (error) {
@@ -69,10 +74,22 @@ const saveBlogToFirestore = async (
     content: string,
     images: string[],
 ) => {
-    // Ensures the slug is unique for each blog post
-    const slugBase = title.toLowerCase().replace(/\s+/g, "-");
+    // Ensures the slug is unique for each blog post and URL-safe
+    const slugBase = title
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+        .replace(/\s+/g, "-") // Replace spaces with hyphens
+        .replace(/-+/g, "-") // Replace multiple consecutive hyphens with single hyphen
+        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const slug = `${slugBase}-${randomNum}`;
+
+    console.log(`Generated slug for title "${title}": "${slug}"`);
+
+    // Ensure slug is not empty
+    if (!slugBase.trim()) {
+        throw new Error("Generated slug is empty. Please provide a title with alphanumeric characters.");
+    }
     
     try {
         const blogPostDoc = {
